@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sriracha&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&display=swap");
 
 /* ----------------------------- */
 /* A változók beállítása         */
@@ -52,7 +54,11 @@ input {
 /* A HTML és alap beállítások    */
 /* ----------------------------- */
 * {
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
+  /* font-family: "Sriracha", serif; */
+  font-family: "Alkatra", system-ui;
+  /* font-weight: 600; */
+  /* font-style: italic; */
   font-size: 14px;
   /*   scroll-behavior: smooth;
   scroll-padding-top: 80px; */
@@ -105,6 +111,50 @@ img {
 }
 
 /* ----------------------------- */
+/* A Hullám animáció beállítása  */
+/* ----------------------------- */
+body > .vawe {
+  width: var(--header-height);
+  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  &::before {
+    content: "";
+    position: absolute;
+    aspect-ratio: 1;
+    background: transparent;
+    border: 3px solid var(--color-bg);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--color-bg);
+    animation: sono-wave 3s ease-out infinite;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    aspect-ratio: 1;
+    background: transparent;
+    border: 3px solid var(--color-bg);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--color-bg);
+    animation: sono-wave 3s ease-out infinite;
+    animation-delay: 0.3s;
+  }
+}
+@keyframes sono-wave {
+  0% {
+    top: -0.5%;
+    left: -0.5%;
+    width: 1%;
+  }
+  100% {
+    top: -2000%;
+    left: -2000%;
+    width: 4000%;
+  }
+}
+
+/* ----------------------------- */
 /* A LOGO elem beállítása        */
 /* ----------------------------- */
 & body > .logo {
@@ -116,17 +166,22 @@ img {
   left: 0;
   transform-style: preserve-3d;
   perspective: 1000px;
-  z-index: 100;
+  z-index: 10;
   & .slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     transform: scale(-1, 1);
     rotate: y 90deg;
     transform-style: preserve-3d;
-    animation: animate 8s cubic-bezier(0, 0.48, 1, 0.52) infinite;
+    background-color: var(--color-butter);
+    border-radius: 50%;
+    animation: rotate 8s cubic-bezier(0, 0.48, 1, 0.52) infinite;
     animation-delay: calc(var(--i) * 4s);
   }
 }
-@keyframes animate {
+@keyframes rotate {
   0% {
     rotate: y 90deg;
   }
@@ -143,7 +198,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   gap: 0.5rem;
   position: fixed;
   top: 0;
@@ -229,6 +283,9 @@ header {
       &.menu-active {
         right: 0;
       }
+      & a {
+        font-weight: 800;
+      }
     }
   }
 }
@@ -241,9 +298,12 @@ main {
   & h2 {
     font-size: 1.8rem;
   }
+  & h3 {
+    font-size: 1.7rem;
+  }
   & p {
     font-size: 1.1rem;
-    font-weight: 800;
+    font-weight: 500;
   }
   & .button-part,
   & .icon-part {
@@ -276,13 +336,18 @@ main {
       padding: 0.5rem;
       border: 3px solid var(--color-font);
       border-radius: 0.5rem;
+      & .upper-part {
+        display: flex;
+        flex-direction: column;
+        & h2 {
+          margin: 0 auto;
+        }
+      }
       & .bottom-part {
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 0.2rem;
-        & a {
-          align-self: center;
-        }
       }
     }
   }
