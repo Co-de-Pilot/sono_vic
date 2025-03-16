@@ -1,7 +1,7 @@
-# code_facto
+# sono_vic
 
-The sales website of a new Coding-heavy Learning Management System called "CODE FACTO".
-This website build as a learning project in order to practice HTML, CSS and Javascript language.
+The landing website of a new sonography diagnostic enterprise.
 
-https://co-de-pilot.github.io/code_facto/
+https://co-de-pilot.github.io/sono_vic/
+
 # sono_vic
