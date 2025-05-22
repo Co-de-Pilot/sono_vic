@@ -1,3 +1,8 @@
+/* TODO:
+  1. footer z-index
+  2. div.vawe
+*/
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Sriracha&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&display=swap");
@@ -78,16 +83,19 @@ body {
 /* ---------------------------------- */
 /* Az általános stílusok beállítása   */
 /* ---------------------------------- */
-.blend-mix-button {
+.basic-button {
   color: var(--color-button);
-  transition: var(--transition-duration);
   font-size: 1.4rem;
+  font-weight: 800;
   padding-inline: 0.4rem;
   border-radius: 0.5rem;
+  transition: var(--transition-duration);
   cursor: pointer;
   &:hover {
     color: var(--color-hover);
-    /* filter: drop-shadow(0 0 3px var(--color-hover)); */
+    text-shadow: 0 0 13px var(--color-button);
+    filter: drop-shadow(0 0 3px var(--color-button))
+      drop-shadow(0 0 8px var(--color-button));
   }
   &.highlighted {
     border: 3px solid var(--color-button);
@@ -98,7 +106,6 @@ body {
 }
 .basic-element-design {
   backdrop-filter: blur(3px);
-  /* mix-blend-mode: exclusion; */
   background-color: var(--color-bg);
   border-radius: 1rem;
   padding: 1rem;
@@ -116,10 +123,67 @@ img {
 body > .vawe {
   width: var(--header-height);
   height: var(--header-height);
+  margin: 0.5rem;
   position: fixed;
   top: 0;
   left: 0;
   &::before {
+    content: "";
+    position: absolute;
+    aspect-ratio: 1;
+    background: transparent;
+    backdrop-filter: invert(100%);
+    border-radius: 50%;
+    animation: sono-wave-outer 4s ease-out infinite;
+    z-index: -1;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    aspect-ratio: 1;
+    background: transparent;
+    backdrop-filter: invert(100%);
+    border-radius: 50%;
+    animation: sono-wave-inner 4s ease-out infinite;
+    z-index: -1;
+  }
+}
+@keyframes sono-wave-outer {
+  0% {
+    top: 0;
+    left: 0;
+    width: var(--header-height);
+  }
+  97% {
+    top: -120vh;
+    left: -120vh;
+    width: 240vh;
+  }
+  100% {
+    top: -120vh;
+    left: -120vh;
+    width: 240vh;
+  }
+}
+@keyframes sono-wave-inner {
+  0% {
+    top: 0;
+    left: 0;
+    width: var(--header-height);
+  }
+  3% {
+    top: 0;
+    left: 0;
+    width: var(--header-height);
+  }
+  100% {
+    top: -120vh;
+    left: -120vh;
+    width: 240vh;
+  }
+}
+
+/*   &::before {
     content: "";
     position: absolute;
     aspect-ratio: 1;
@@ -152,7 +216,7 @@ body > .vawe {
     left: -2000%;
     width: 4000%;
   }
-}
+} */
 
 /* ----------------------------- */
 /* A LOGO elem beállítása        */
@@ -166,7 +230,7 @@ body > .vawe {
   left: 0;
   transform-style: preserve-3d;
   perspective: 1000px;
-  z-index: 10;
+  z-index: 100;
   & .slide {
     display: flex;
     justify-content: center;
@@ -283,9 +347,9 @@ header {
       &.menu-active {
         right: 0;
       }
-      & a {
+      /*       & a {
         font-weight: 800;
-      }
+      } */
     }
   }
 }
@@ -293,65 +357,135 @@ header {
 /* A MAIN elemeinek beállítása   */
 /* ----------------------------- */
 main {
-  margin: calc(var(--header-height) + 1.5rem) 1rem 1rem 1rem;
-  color: var(--color-font);
-  & h2 {
-    font-size: 1.8rem;
-  }
-  & h3 {
-    font-size: 1.7rem;
-  }
-  & p {
-    font-size: 1.1rem;
-    font-weight: 500;
-  }
-  & .button-part,
-  & .icon-part {
-    display: flex;
-    justify-content: space-evenly;
-    & svg {
-      width: clamp(100px, 40%, 250px);
-    }
-  }
   & section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
-    width: clamp(var(--card-min-width), 60%, 60%);
-    margin: 1rem 0;
-  }
-  & .crew {
+    margin: calc(var(--header-height) + 1.5rem) 1rem 1rem 1rem;
+    color: var(--color-font);
     position: relative;
-    left: min(40%, calc(100% - var(--card-min-width)));
-  }
-  & .pricing-card-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    & .pricing-card {
+    z-index: 20;
+    & h2 {
+      font-size: 1.8rem;
+    }
+    & h3 {
+      font-size: 1.7rem;
+    }
+    & p,
+    & p a {
+      font-size: 1.1rem;
+      font-weight: 500;
+      &.highlighted {
+        font-weight: 700;
+        color: var(--color-hover);
+        text-shadow: 0 0 3px var(--color-button), 0 0 8px var(--color-button),
+          0 0 13px var(--color-button);
+      }
+    }
+    & .button-part,
+    & .icon-part {
+      display: flex;
+      justify-content: space-evenly;
+      & svg,
+      img {
+        width: clamp(100px, 40%, 250px);
+        height: clamp(100px, 40%, 250px);
+      }
+      & img {
+        border-radius: 50%;
+      }
+    }
+    & article {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 0.5rem;
-      border: 3px solid var(--color-font);
-      border-radius: 0.5rem;
-      & .upper-part {
+      justify-content: center;
+      gap: 1rem;
+      width: clamp(var(--card-min-width), 60%, 60%);
+      margin: 1rem 0;
+    }
+    & .left-side {
+      position: relative;
+      left: min(40%, calc(100% - var(--card-min-width)));
+    }
+    & .pricing-card-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      & .pricing-card {
         display: flex;
         flex-direction: column;
-        & h2 {
-          margin: 0 auto;
+        justify-content: space-between;
+        padding: 0.5rem;
+        border: 3px solid var(--color-font);
+        border-radius: 0.5rem;
+        & .upper-part {
+          display: flex;
+          flex-direction: column;
+          & h2 {
+            margin: 0 auto;
+          }
         }
-      }
-      & .bottom-part {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.2rem;
+        & .bottom-part {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.2rem;
+        }
       }
     }
   }
 }
+
+.contact {
+  & form {
+    /*     width: clamp(270px, 45vw, 800px);
+    text-align: center; */
+    & .field .form-item {
+      width: 100%;
+      padding: 0.5rem;
+      background: transparent;
+      border: 2px solid var(--color-button);
+      border-radius: 5px;
+      box-shadow: 0 0 8px 2px var(--color-button);
+      font-size: 1rem;
+      margin-top: 11px;
+      &.error,
+      &.blank {
+        border: 2px solid var(--color-hover);
+        box-shadow: 0 0 8px 2px var(--color-hover);
+      }
+      &::placeholder {
+        color: var(--color-font);
+      }
+    }
+    & .field .blank-txt,
+    & .field .error-txt {
+      display: none;
+      font-size: 0.8rem;
+      color: var(--color-hover);
+      text-align: left;
+      margin-top: 3px;
+      margin-bottom: 8px;
+    }
+    & .field.error .error-txt,
+    & .field.blank .blank-txt {
+      display: block;
+    }
+    & .textarea-field .blank-txt {
+      margin-top: -1px;
+    }
+    & .textarea-field .form-item {
+      resize: none;
+    }
+    & .submit-button {
+      /*       border: none;
+      outline: none;
+      border-radius: 5px;
+      background: transparent;
+      font-family: inherit;
+      cursor: pointer; */
+      margin: 0 auto;
+    }
+  }
+}
+
 /* ----------------------------- */
 /* A FOOTER elemeinek beállítása */
 /* ----------------------------- */
@@ -394,6 +528,40 @@ footer {
   * {
     font-size: 18px;
   }
+  @keyframes sono-wave-outer {
+    0% {
+      top: 0;
+      left: 0;
+      width: var(--header-height);
+    }
+    97% {
+      top: -120vw;
+      left: -120vw;
+      width: 240vw;
+    }
+    100% {
+      top: -120vw;
+      left: -120vw;
+      width: 240vw;
+    }
+  }
+  @keyframes sono-wave-inner {
+    0% {
+      top: 0;
+      left: 0;
+      width: var(--header-height);
+    }
+    3% {
+      top: 0;
+      left: 0;
+      width: var(--header-height);
+    }
+    100% {
+      top: -120vw;
+      left: -120vw;
+      width: 240vw;
+    }
+  }
 }
 @media screen and (min-width: 1024px) {
   header {
@@ -424,16 +592,18 @@ footer {
     }
   }
   main {
-    & .pricing-card-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      & .pricing-card {
+    & section {
+      & .pricing-card-container {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: space-between;
-        width: 48%;
-        padding: 0.5rem;
+        & .pricing-card {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 48%;
+          padding: 0.5rem;
+        }
       }
     }
   }
