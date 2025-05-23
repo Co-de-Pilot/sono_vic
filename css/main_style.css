@@ -91,7 +91,8 @@ body {
   border-radius: 0.5rem;
   transition: var(--transition-duration);
   cursor: pointer;
-  &:hover {
+  &:hover,
+  &.actual {
     color: var(--color-hover);
     text-shadow: 0 0 13px var(--color-button);
     filter: drop-shadow(0 0 3px var(--color-button))
@@ -358,10 +359,14 @@ header {
 /* ----------------------------- */
 main {
   & section {
+    display: none;
     margin: calc(var(--header-height) + 1.5rem) 1rem 1rem 1rem;
     color: var(--color-font);
     position: relative;
     z-index: 20;
+    &.actualsection {
+      display: block;
+    }
     & h2 {
       font-size: 1.8rem;
     }
