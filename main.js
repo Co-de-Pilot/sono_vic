@@ -10,8 +10,10 @@ menuToggle.addEventListener("click", () => {
 /* MENU ACTIVE LINK vezérlése */
 const sections = document.querySelectorAll("section");
 const menuitems = document.querySelectorAll("nav .menu li a.menu-ref");
+const menulinks = document.querySelectorAll("a.secondary-ref");
+console.log(menulinks);
 
-menuitems.forEach((menuitem, index) => {
+menuitems.forEach((menuitem) => {
   menuitem.addEventListener("click", (menuevent) => {
     menuevent.preventDefault();
     let actualmenuitem = document.querySelector(".actual");
@@ -19,7 +21,28 @@ menuitems.forEach((menuitem, index) => {
     menuitem.classList.add("actual");
     let actualsection = document.querySelector(".actualsection");
     actualsection.classList.remove("actualsection");
-    sections[index].classList.add("actualsection");
+    let nextsection = document.querySelector(
+      "." + menuitem.getAttribute("data-text")
+    );
+    nextsection.classList.add("actualsection");
+  });
+});
+
+menulinks.forEach((menulink) => {
+  menulink.addEventListener("click", (menuevent) => {
+    menuevent.preventDefault();
+    let actualmenuitem = document.querySelector(".actual");
+    actualmenuitem.classList.remove("actual");
+    let nextmenuitem = document.querySelector(
+      "#" + menulink.getAttribute("data-text")
+    );
+    nextmenuitem.classList.add("actual");
+    let actualsection = document.querySelector(".actualsection");
+    actualsection.classList.remove("actualsection");
+    let nextsection = document.querySelector(
+      "." + menulink.getAttribute("data-text")
+    );
+    nextsection.classList.add("actualsection");
   });
 });
 
