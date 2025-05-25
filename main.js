@@ -22,3 +22,37 @@ menuitems.forEach((menuitem, index) => {
     sections[index].classList.add("actualsection");
   });
 });
+
+/* CONTACT FORM vezérlése */
+const submitButton = document.querySelector("form .submit-button");
+const form = document.querySelector(".contact-form");
+const items = document.querySelectorAll(".form-item");
+
+submitButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (Array.from(items).every((item) => item.checkValidity())) {
+    form.submit();
+    form.reset();
+  } else {
+    let invalidItems = Array.from(items).filter(
+      (item) => !item.checkValidity()
+    );
+    invalidItems.map((invalidItem) => {
+      if (invalidItem.value === "") {
+        invalidItem.classList.add("blank");
+        invalidItem.parentElement.classList.add("blank");
+      } else {
+        invalidItem.classList.add("error");
+        invalidItem.parentElement.classList.add("error");
+      }
+      invalidItem.addEventListener("keyup", (event) => {
+        if (invalidItem.checkValidity()) {
+          invalidItem.classList.remove("blank");
+          invalidItem.parentElement.classList.remove("blank");
+          invalidItem.classList.remove("error");
+          invalidItem.parentElement.classList.remove("error");
+        }
+      });
+    });
+  }
+});

@@ -1,10 +1,12 @@
 /* TODO:
-  1. footer z-index
-  2. div.vawe
+  1. Footer elemek beállítása
+  2. Háttérképek beállítása
+  3. Facebook link beállítása
+  4. Telefon link beállítása
+  5. Foglalás link beállítása
+  6. Vizsgálati helyszínek
 */
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Sriracha&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&display=swap");
 
 /* ----------------------------- */
@@ -12,20 +14,10 @@
 /* ----------------------------- */
 :root {
   /* Színek: */
-  --color-dark-red: rgba(111, 0, 0, 1);
-  --color-light-red: rgba(193, 18, 31, 1);
-  --color-butter: rgba(253, 240, 213, 0.8);
-  --color-dark-blue: rgba(0, 38, 80, 1);
-  --color-dark-green: rgb(18, 88, 88);
-
-  --color-lime: rgba(137, 193, 6, 0.95);
-  --color-blue: rgba(17, 138, 178, 1);
-  --color-black: rgba(11, 11, 11, 1);
-
   --color-bg: rgba(18, 138, 178, 0.5);
-  --color-button: rgba(248, 238, 218, 0.8);
+  --color-button-font: rgba(248, 238, 218, 0.8);
   --color-hover: rgba(218, 65, 103, 1);
-  --color-font: rgba(248, 238, 218, 0.8);
+  --color-valid: rgba(0, 197, 180, 1);
 
   /* Dimenziók: */
   --body-min-width: 300px;
@@ -59,18 +51,9 @@ input {
 /* A HTML és alap beállítások    */
 /* ----------------------------- */
 * {
-  /* font-family: "Poppins", sans-serif; */
-  /* font-family: "Sriracha", serif; */
   font-family: "Alkatra", system-ui;
-  /* font-weight: 600; */
-  /* font-style: italic; */
   font-size: 14px;
-  /*   scroll-behavior: smooth;
-  scroll-padding-top: 80px; */
 }
-/* html {
-  scroll-behavior: smooth;
-} */
 body {
   min-width: var(--body-min-width);
   background-image: var(--bg-image);
@@ -84,24 +67,28 @@ body {
 /* Az általános stílusok beállítása   */
 /* ---------------------------------- */
 .basic-button {
-  color: var(--color-button);
-  font-size: 1.4rem;
-  font-weight: 800;
-  padding-inline: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-button-font);
+  padding: 0.3rem 0.3rem;
   border-radius: 0.5rem;
   transition: var(--transition-duration);
   cursor: pointer;
+  & svg {
+    width: clamp(100px, 20vw, 140px);
+    border-radius: 0.5rem;
+  }
   &:hover,
   &.actual {
     color: var(--color-hover);
-    text-shadow: 0 0 13px var(--color-button);
-    filter: drop-shadow(0 0 3px var(--color-button))
-      drop-shadow(0 0 8px var(--color-button));
+    filter: drop-shadow(0 0 3px var(--color-button-font))
+      drop-shadow(0 0 8px var(--color-button-font));
   }
   &.highlighted {
-    border: 3px solid var(--color-button);
+    border: 1px solid var(--color-button-font);
     &:hover {
-      border: 3px solid var(--color-hover);
+      border: 1px solid var(--color-hover);
     }
   }
 }
@@ -184,41 +171,6 @@ body > .vawe {
   }
 }
 
-/*   &::before {
-    content: "";
-    position: absolute;
-    aspect-ratio: 1;
-    background: transparent;
-    border: 3px solid var(--color-bg);
-    border-radius: 50%;
-    box-shadow: 0 0 8px var(--color-bg);
-    animation: sono-wave 3s ease-out infinite;
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    aspect-ratio: 1;
-    background: transparent;
-    border: 3px solid var(--color-bg);
-    border-radius: 50%;
-    box-shadow: 0 0 8px var(--color-bg);
-    animation: sono-wave 3s ease-out infinite;
-    animation-delay: 0.3s;
-  }
-}
-@keyframes sono-wave {
-  0% {
-    top: -0.5%;
-    left: -0.5%;
-    width: 1%;
-  }
-  100% {
-    top: -2000%;
-    left: -2000%;
-    width: 4000%;
-  }
-} */
-
 /* ----------------------------- */
 /* A LOGO elem beállítása        */
 /* ----------------------------- */
@@ -240,7 +192,7 @@ body > .vawe {
     transform: scale(-1, 1);
     rotate: y 90deg;
     transform-style: preserve-3d;
-    background-color: var(--color-butter);
+    background-color: var(--color-button-font);
     border-radius: 50%;
     animation: rotate 8s cubic-bezier(0, 0.48, 1, 0.52) infinite;
     animation-delay: calc(var(--i) * 4s);
@@ -282,7 +234,7 @@ header {
     height: 100%;
     & .phone-number {
       display: none;
-      color: var(--color-button);
+      color: var(--color-button-font);
     }
     & a {
       height: 4rem;
@@ -313,17 +265,18 @@ header {
         position: relative;
         width: 80%;
         height: 4px;
-        background: var(--color-button);
-        /* filter: drop-shadow(0 0 3px var(--color-dark-blue)); */
+        background: var(--color-button-font);
         transition: var(--transition-duration);
       }
       &:hover li {
         background: var(--color-hover);
-        /* filter: drop-shadow(0 0 3px var(--color-dark-red)); */
+        filter: drop-shadow(0 0 3px var(--color-button-font))
+          drop-shadow(0 0 8px var(--color-button-font));
       }
       &.menu-active li {
         background: var(--color-hover);
-        /* filter: drop-shadow(0 0 3px var(--color-hover)); */
+        filter: drop-shadow(0 0 3px var(--color-button-font))
+          drop-shadow(0 0 8px var(--color-button-font));
         &:nth-of-type(1) {
           transform: translateY(0.8rem) rotate(45deg);
         }
@@ -348,9 +301,6 @@ header {
       &.menu-active {
         right: 0;
       }
-      /*       & a {
-        font-weight: 800;
-      } */
     }
   }
 }
@@ -361,7 +311,7 @@ main {
   & section {
     display: none;
     margin: calc(var(--header-height) + 1.5rem) 1rem 1rem 1rem;
-    color: var(--color-font);
+    color: var(--color-button-font);
     position: relative;
     z-index: 20;
     &.actualsection {
@@ -380,14 +330,16 @@ main {
       &.highlighted {
         font-weight: 700;
         color: var(--color-hover);
-        text-shadow: 0 0 3px var(--color-button), 0 0 8px var(--color-button),
-          0 0 13px var(--color-button);
+        text-shadow: 0 0 3px var(--color-button),
+          0 0 8px var(--color-button-font), 0 0 13px var(--color-button-font);
       }
     }
     & .button-part,
     & .icon-part {
       display: flex;
       justify-content: space-evenly;
+    }
+    & .icon-part {
       & svg,
       img {
         width: clamp(100px, 40%, 250px);
@@ -418,7 +370,7 @@ main {
         flex-direction: column;
         justify-content: space-between;
         padding: 0.5rem;
-        border: 3px solid var(--color-font);
+        border: 3px solid var(--color-button-font);
         border-radius: 0.5rem;
         & .upper-part {
           display: flex;
@@ -440,15 +392,13 @@ main {
 
 .contact {
   & form {
-    /*     width: clamp(270px, 45vw, 800px);
-    text-align: center; */
     & .field .form-item {
       width: 100%;
       padding: 0.5rem;
       background: transparent;
-      border: 2px solid var(--color-button);
+      border: 2px solid var(--color-button-font);
       border-radius: 5px;
-      box-shadow: 0 0 8px 2px var(--color-button);
+      box-shadow: 0 0 8px 2px var(--color-button-font);
       font-size: 1rem;
       margin-top: 11px;
       &.error,
@@ -457,13 +407,36 @@ main {
         box-shadow: 0 0 8px 2px var(--color-hover);
       }
       &::placeholder {
-        color: var(--color-font);
+        color: var(--color-button-font);
       }
+    }
+    & .field input.form-item:valid:not(:placeholder-shown),
+    & .field input.form-item:invalid:not(:placeholder-shown),
+    & .field textarea.form-item:valid:not(:placeholder-shown) {
+      background-repeat: no-repeat;
+      background-position: calc(100% - 10px) center;
+    }
+    & .field textarea.form-item:valid:not(:placeholder-shown) {
+      background-position: calc(100% - 10px) 6px;
+    }
+    & .field input.form-item:invalid:not(:placeholder-shown) {
+      border: 2px solid var(--color-hover);
+      box-shadow: 0 0 8px 2px var(--color-hover);
+      background-image: url(../resources/invalid.svg);
+    }
+    & .field input.form-item:invalid:not(:placeholder-shown) ~ div.error-txt {
+      display: block;
+    }
+    & .field input.form-item:valid:not(:placeholder-shown),
+    & .field textarea.form-item:valid:not(:placeholder-shown) {
+      border: 2px solid var(--color-valid);
+      box-shadow: 0 0 8px 2px var(--color-valid);
+      background-image: url(../resources/valid.svg);
     }
     & .field .blank-txt,
     & .field .error-txt {
       display: none;
-      font-size: 0.8rem;
+      font-size: 1rem;
       color: var(--color-hover);
       text-align: left;
       margin-top: 3px;
@@ -480,12 +453,6 @@ main {
       resize: none;
     }
     & .submit-button {
-      /*       border: none;
-      outline: none;
-      border-radius: 5px;
-      background: transparent;
-      font-family: inherit;
-      cursor: pointer; */
       margin: 0 auto;
     }
   }
@@ -574,7 +541,7 @@ footer {
     & .contacts {
       & .phone-number {
         display: block;
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         margin-left: 0.5rem;
       }
       & .phone-icon {
