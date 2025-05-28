@@ -1,10 +1,5 @@
 /* TODO:
-  1. Footer elemek beállítása / egyéb menü gombok data-text
-  2. Háttérképek beállítása
-  3. Facebook link beállítása
-  4. Telefon link beállítása
-  5. Foglalás link beállítása
-  6. Vizsgálati helyszínek
+  1. Facebook link beállítása
 */
 
 @import url("https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&display=swap");
@@ -489,12 +484,6 @@ footer {
 /* ----------------------------- */
 /* A reszponzivitás beállítása   */
 /* ----------------------------- */
-@media screen and (min-width: 500px) {
-  /*   header .logo,
-  footer .logo {
-    width: auto;
-  } */
-}
 @media screen and (min-width: 768px) {
   * {
     font-size: 18px;
