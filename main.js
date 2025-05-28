@@ -11,7 +11,6 @@ menuToggle.addEventListener("click", () => {
 const sections = document.querySelectorAll("section");
 const menuitems = document.querySelectorAll("nav .menu li a.menu-ref");
 const menulinks = document.querySelectorAll("a.secondary-ref");
-console.log(menulinks);
 
 menuitems.forEach((menuitem) => {
   menuitem.addEventListener("click", (menuevent) => {
