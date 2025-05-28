@@ -227,6 +227,9 @@ header {
     justify-content: center;
     align-items: center;
     height: 100%;
+    & h1 {
+      display: none;
+    }
     & .phone-number {
       display: none;
       color: var(--color-button-font);
