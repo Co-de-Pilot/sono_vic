@@ -1,4 +1,6 @@
-/* MENU TOGGLE vezérlése */
+/* ----------------------------- */
+/* MENU TOGGLE vezérlése         */
+/* ----------------------------- */
 const menuToggle = document.querySelector("nav .toggle");
 const menuList = document.querySelector("nav .menu");
 
@@ -7,7 +9,9 @@ menuToggle.addEventListener("click", () => {
   menuList.classList.toggle("menu-active");
 });
 
-/* MENU ACTIVE LINK vezérlése */
+/* ----------------------------- */
+/* MENU ACTIVE LINK vezérlése    */
+/* ----------------------------- */
 const sections = document.querySelectorAll("section");
 const menuitems = document.querySelectorAll("nav .menu li a.menu-ref");
 const menulinks = document.querySelectorAll("a.secondary-ref");
@@ -45,7 +49,9 @@ menulinks.forEach((menulink) => {
   });
 });
 
-/* CONTACT FORM vezérlése */
+/* ----------------------------- */
+/* CONTACT FORM vezérlése        */
+/* ----------------------------- */
 const submitButton = document.querySelector("form .submit-button");
 const form = document.querySelector(".contact-form");
 const items = document.querySelectorAll(".form-item");
@@ -77,4 +83,25 @@ submitButton.addEventListener("click", (event) => {
       });
     });
   }
+});
+
+/* ----------------------------- */
+/* COOKIE MODAL vezérlése        */
+/* ----------------------------- */
+const cookieModal = document.querySelector(".cookie-modal");
+
+window.addEventListener("load", (event) => {
+  cookieModal.showModal();
+});
+
+/* ----------------------------- */
+/* BOOOKING MODAL vezérlése        */
+/* ----------------------------- */
+const bookingModal = document.querySelector(".booking-modal");
+const bookingLinks = document.querySelectorAll("a.highlighted");
+
+bookingLinks.forEach((bookingLink) => {
+  bookingLink.addEventListener("click", (event) => {
+    bookingModal.showModal();
+  });
 });

@@ -1,7 +1,6 @@
 /* TODO:
   1. Kapcsolat űrlap automatikus kitöltés stílusa
-  2. Betűméretek korrigálása / letter spacing
-  3. Modal ablak cookie-k
+  2. Modal ablak cookie-k
   4. Modal ablak telefonos ügyfélszolgálat
   5. Modal ablak foglalás/vizsgálat előtti teendők
 */
@@ -54,6 +53,7 @@ input {
 * {
   font-family: "Alkatra", system-ui;
   font-size: 14px;
+  letter-spacing: 1px;
 }
 body {
   min-width: var(--body-min-width);
@@ -104,6 +104,39 @@ body {
 }
 img {
   width: 100%;
+}
+:modal {
+  width: 80vw;
+  position: fixed;
+  top: 0.5rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border: none;
+  color: var(--color-button-font);
+  & p,
+  a {
+    font-size: 1.2rem;
+    margin: 0.8rem;
+    margin-right: 2rem;
+    &.highlighted {
+      font-weight: 700;
+      color: var(--color-hover);
+    }
+  }
+  & button {
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-block: 0;
+    padding-inline: 0;
+    margin: 0.5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
 }
 
 /* ----------------------------- */
@@ -323,14 +356,17 @@ main {
     }
     & h2 {
       font-size: 1.8rem;
+      text-wrap: balance;
     }
     & h3 {
       font-size: 1.7rem;
+      text-wrap: balance;
     }
     & p,
     & p a {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 500;
+      text-wrap: pretty;
       &.highlighted {
         font-weight: 700;
         color: var(--color-hover);
@@ -477,11 +513,6 @@ footer {
       display: flex;
       flex-direction: column;
       justify-content: center;
-
-      & a {
-        font-size: 0.8rem;
-        font-weight: 500;
-      }
     }
   }
   & p {
@@ -532,9 +563,6 @@ footer {
   }
 }
 @media screen and (min-width: 1024px) {
-  * {
-    font-size: 21px;
-  }
   header {
     justify-content: space-between;
     & .contacts {
@@ -569,6 +597,16 @@ footer {
   }
   main {
     & section {
+      & h2 {
+        font-size: 2.2rem;
+      }
+      & h3 {
+        font-size: 2.1rem;
+      }
+      & p,
+      & p a {
+        font-size: 1.4rem;
+      }
       & .pricing-card-container {
         display: flex;
         flex-direction: row;
