@@ -1,5 +1,9 @@
 /* TODO:
-  1.
+  1. Kapcsolat űrlap automatikus kitöltés stílusa
+  2. Betűméretek korrigálása / letter spacing
+  3. Modal ablak cookie-k
+  4. Modal ablak telefonos ügyfélszolgálat
+  5. Modal ablak foglalás/vizsgálat előtti teendők
 */
 
 @import url("https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&display=swap");
@@ -9,10 +13,10 @@
 /* ----------------------------- */
 :root {
   /* Színek: */
-  --color-bg: rgba(18, 138, 178, 0.5);
+  --color-bg: rgba(18, 118, 149, 0.68);
   --color-button-font: rgba(248, 238, 218, 0.8);
-  --color-hover: rgba(218, 65, 103, 1);
-  --color-valid: rgba(0, 197, 180, 1);
+  --color-hover: rgba(218, 6, 49, 1);
+  --color-valid: rgb(110, 254, 110);
 
   /* Dimenziók: */
   --body-min-width: 300px;
@@ -21,6 +25,8 @@
 
   /* Időtartamok */
   --transition-duration: 0.5s;
+  --animation-duration: 4s;
+
   /* Háttérképek */
   --bg-image: url("../resources/background_1.jpg");
 }
@@ -117,7 +123,7 @@ body > .vawe {
     background: transparent;
     backdrop-filter: invert(100%);
     border-radius: 50%;
-    animation: sono-wave-outer 4s ease-out infinite;
+    animation: sono-wave-outer var(--animation-duration) ease-out infinite;
     z-index: -1;
   }
   &::after {
@@ -127,7 +133,7 @@ body > .vawe {
     background: transparent;
     backdrop-filter: invert(100%);
     border-radius: 50%;
-    animation: sono-wave-inner 4s ease-out infinite;
+    animation: sono-wave-inner var(--animation-duration) ease-out infinite;
     z-index: -1;
   }
 }
@@ -190,7 +196,7 @@ body > .vawe {
     background-color: var(--color-button-font);
     border-radius: 50%;
     animation: rotate 8s cubic-bezier(0, 0.48, 1, 0.52) infinite;
-    animation-delay: calc(var(--i) * 4s);
+    animation-delay: calc(var(--i) * var(--animation-duration));
   }
 }
 @keyframes rotate {
@@ -328,14 +334,12 @@ main {
       &.highlighted {
         font-weight: 700;
         color: var(--color-hover);
-        text-shadow: 0 0 3px var(--color-button),
-          0 0 8px var(--color-button-font), 0 0 13px var(--color-button-font);
       }
     }
     & .button-part,
     & .icon-part {
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-around;
     }
     & .icon-part {
       & svg,
@@ -398,6 +402,7 @@ main {
       border-radius: 5px;
       box-shadow: 0 0 8px 2px var(--color-button-font);
       font-size: 1rem;
+      color: var(--color-button-font);
       margin-top: 11px;
       &.error,
       &.blank {
@@ -527,6 +532,9 @@ footer {
   }
 }
 @media screen and (min-width: 1024px) {
+  * {
+    font-size: 21px;
+  }
   header {
     justify-content: space-between;
     & .contacts {
@@ -534,6 +542,11 @@ footer {
         display: block;
         font-size: 1.3rem;
         margin-left: 0.5rem;
+        user-select: all;
+        &::selection {
+          color: var(--color-hover);
+          background-color: var(--color-button-font);
+        }
       }
       & .phone-icon {
         display: none;
