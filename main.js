@@ -95,7 +95,7 @@ window.addEventListener("load", (event) => {
 });
 
 /* ----------------------------- */
-/* BOOOKING MODAL vezérlése        */
+/* BOOOKING MODAL vezérlése      */
 /* ----------------------------- */
 const bookingModal = document.querySelector(".booking-modal");
 const bookingLinks = document.querySelectorAll("a.highlighted");
