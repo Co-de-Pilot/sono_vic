@@ -50,6 +50,28 @@ menulinks.forEach((menulink) => {
 });
 
 /* ----------------------------- */
+/* PHONE LINK vezérlése        */
+/* ----------------------------- */
+const phoneLink = document.querySelector("p.phone-number");
+const phoneIcon = document.querySelector("a.phone-icon");
+const phoneModal = document.querySelector(".phone-modal");
+let informed = false;
+
+phoneLink.addEventListener("mouseover", (event) => {
+  if (!informed) {
+    informed = true;
+    phoneModal.showModal();
+  }
+});
+
+phoneIcon.addEventListener("mouseover", (event) => {
+  if (!informed) {
+    informed = true;
+    phoneModal.showModal();
+  }
+});
+
+/* ----------------------------- */
 /* CONTACT FORM vezérlése        */
 /* ----------------------------- */
 const submitButton = document.querySelector("form .submit-button");
@@ -92,6 +114,15 @@ const cookieModal = document.querySelector(".cookie-modal");
 
 window.addEventListener("load", (event) => {
   cookieModal.showModal();
+});
+
+/* ----------------------------- */
+/* VACATION MODAL vezérlése        */
+/* ----------------------------- */
+const vacationModal = document.querySelector(".vacation-modal");
+
+window.addEventListener("load", (event) => {
+  vacationModal.showModal();
 });
 
 /* ----------------------------- */
