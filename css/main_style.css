@@ -108,13 +108,12 @@ img {
 :modal {
   width: 80vw;
   position: fixed;
-  top: 20%;
+  top: 0.5rem;
   left: 50%;
   transform: translate(-50%, 0);
   border: none;
   color: var(--color-button-font);
-  & p,
-  a {
+  & p {
     font-size: 1.2rem;
     margin: 0.8rem;
     margin-right: 2rem;
