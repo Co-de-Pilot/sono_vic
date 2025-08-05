@@ -119,11 +119,11 @@ window.addEventListener("load", (event) => {
 /* ----------------------------- */
 /* VACATION MODAL vezérlése        */
 /* ----------------------------- */
-const vacationModal = document.querySelector(".vacation-modal");
+/* const vacationModal = document.querySelector(".vacation-modal");
 
 window.addEventListener("load", (event) => {
   vacationModal.showModal();
-});
+}); */
 
 /* ----------------------------- */
 /* BOOOKING MODAL vezérlése      */
