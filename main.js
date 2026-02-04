@@ -25,7 +25,7 @@ menuitems.forEach((menuitem) => {
     let actualsection = document.querySelector(".actualsection");
     actualsection.classList.remove("actualsection");
     let nextsection = document.querySelector(
-      "." + menuitem.getAttribute("data-text")
+      "." + menuitem.getAttribute("data-text"),
     );
     nextsection.classList.add("actualsection");
   });
@@ -37,13 +37,13 @@ menulinks.forEach((menulink) => {
     let actualmenuitem = document.querySelector(".actual");
     actualmenuitem.classList.remove("actual");
     let nextmenuitem = document.querySelector(
-      "#" + menulink.getAttribute("data-text")
+      "#" + menulink.getAttribute("data-text"),
     );
     nextmenuitem.classList.add("actual");
     let actualsection = document.querySelector(".actualsection");
     actualsection.classList.remove("actualsection");
     let nextsection = document.querySelector(
-      "." + menulink.getAttribute("data-text")
+      "." + menulink.getAttribute("data-text"),
     );
     nextsection.classList.add("actualsection");
   });
@@ -85,7 +85,7 @@ submitButton.addEventListener("click", (event) => {
     form.reset();
   } else {
     let invalidItems = Array.from(items).filter(
-      (item) => !item.checkValidity()
+      (item) => !item.checkValidity(),
     );
     invalidItems.map((invalidItem) => {
       if (invalidItem.value === "") {
@@ -114,6 +114,15 @@ const cookieModal = document.querySelector(".cookie-modal");
 
 window.addEventListener("load", (event) => {
   cookieModal.showModal();
+});
+
+/* ----------------------------- */
+/* NOTICE MODAL vezérlése        */
+/* ----------------------------- */
+const noticeModal = document.querySelector(".notice-modal");
+
+window.addEventListener("load", (event) => {
+  noticeModal.showModal();
 });
 
 /* ----------------------------- */
